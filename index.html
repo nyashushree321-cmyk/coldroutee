@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ColdRoute – Reefer trucks on call, with proof it stayed cold</title>
+<meta name="description" content="A marketplace for temperature-controlled road transport across India. Verified reefer trucks, live GPS and temperature tracking, and proof of delivery. Full truckload now, shared loads next.">
+<meta name="theme-color" content="#06121f">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- SVG icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-cake" viewBox="0 0 48 48"><rect x="7" y="25" width="34" height="16" rx="5" fill="#f4b6c6"/><path d="M7 29c4 4 7-3 11 0s7 3 11 0 7 3 12 0v-4a5 5 0 0 0-5-5H12a5 5 0 0 0-5 5z" fill="#fff4f7"/><rect x="22.5" y="11" width="3" height="9" rx="1.5" fill="#7fd8e2"/><path d="M24 4c3 3 2 6 0 6s-3-3 0-6z" fill="#ffb347"/></symbol>
+  <symbol id="i-ice" viewBox="0 0 48 48"><path d="M15 24h18L24 45z" fill="#e0a96d"/><path d="M19 24l5 14M29 24l-5 14" stroke="#c28345" stroke-width="1.5"/><circle cx="24" cy="18" r="11" fill="#f9c7de"/><circle cx="19" cy="13" r="4" fill="#fff" opacity=".4"/><circle cx="26" cy="5" r="3" fill="#e5484d"/></symbol>
+  <symbol id="i-milk" viewBox="0 0 48 48"><path d="M14 18l10-9 10 9v24H14z" fill="#fff" stroke="#9fc4d8" stroke-width="2" stroke-linejoin="round"/><rect x="14" y="24" width="20" height="10" fill="#4da3e6"/><circle cx="24" cy="29" r="3.2" fill="#fff"/></symbol>
+  <symbol id="i-fish" viewBox="0 0 48 48"><path d="M5 24c7-10 20-12 28-2l10-7v18l-10-7C25 36 12 34 5 24z" fill="#6ec1e4"/><path d="M13 24c4-4 9-5 13-3" stroke="#fff" stroke-width="2" fill="none" opacity=".6"/><circle cx="14" cy="22" r="2" fill="#0b2f4d"/></symbol>
+  <symbol id="i-meat" viewBox="0 0 48 48"><path d="M34 6a9 9 0 0 1 5 16l-4 3-3 7-14 5-3-3 5-14 7-3z" fill="#d86a4a"/><path d="M13 36l-6 6M10 41l-3 1 1-3" stroke="#f3e6d2" stroke-width="4" stroke-linecap="round"/><circle cx="33" cy="15" r="3" fill="#f2a58f" opacity=".7"/></symbol>
+  <symbol id="i-pill" viewBox="0 0 48 48"><g transform="rotate(-40 24 24)"><rect x="5" y="15" width="38" height="18" rx="9" fill="#fff" stroke="#9fc4d8" stroke-width="2"/><path d="M24 15h10a9 9 0 0 1 0 18H24z" fill="#3fb8af"/></g></symbol>
+  <symbol id="i-snow" viewBox="0 0 24 24"><path d="M12 2v20M3.3 7l17.4 10M3.3 17L20.7 7M9 3.5l3 2.5 3-2.5M9 20.5l3-2.5 3 2.5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></symbol>
+</svg>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a href="#top" class="logo"><svg class="lgo"><use href="#i-snow"/></svg>ColdRoute</a>
+    <nav id="menu" aria-label="Main">
+      <a href="#why">Why</a>
+      <a href="#how">How it works</a>
+      <a href="#modes">FTL &amp; PTL</a>
+      <a href="#trucks">Smart trucks</a>
+      <a href="#apps">Apps</a>
+      <a href="#trust">Trust</a>
+      <a href="#who">Who it's for</a>
+      <a href="#roadmap">Roadmap</a>
+    </nav>
+    <a href="#join" class="btn sm">Get early access</a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <video id="heroVideo" class="bgvid" autoplay muted loop playsinline preload="auto" poster="assets/hero-poster.jpg">
+    <!-- Put your real truck footage at assets/real/hero-truck.mp4 (tried first). If the file is missing, the animated clip below plays instead. -->
+    <source src="assets/real/hero-truck.mp4" type="video/mp4">
+    <source src="assets/hero.mp4" type="video/mp4">
+  </video>
+  <!-- Real hero photo (assets/real/hero-truck.jpg) is used with a slow camera move when no real video exists -->
+  <div class="hero-photo" id="heroPhoto" hidden></div>
+  <div class="hero-shade"></div>
+  <div class="wrap hero-in">
+    <div class="hero-copy">
+      <span class="eyebrow"><i class="live"></i> Cold-chain logistics · India</span>
+      <h1>Cold chain,<br><span class="grad">on call.</span></h1>
+      <p class="lead">Book a verified refrigerated truck in minutes. Follow it live. Get the temperature record as proof when it arrives.</p>
+      <div class="cta">
+        <a href="#join" class="btn lg">Book a reefer</a>
+        <a href="#how" class="btn lg ghost"><span class="play">▶</span> See how it works</a>
+      </div>
+      <ul class="ticks">
+        <li>Verified hygiene &amp; documents</li>
+        <li>Live GPS + temperature</li>
+        <li>FTL now, PTL shared loads next</li>
+      </ul>
+    </div>
+  </div>
+  <a href="#why" class="scroll" aria-label="Scroll down"><i></i></a>
+</section>
+
+<!-- MARQUEE -->
+<section class="marquee" aria-label="What we carry">
+  <div class="track">
+    <span><svg><use href="#i-cake"/></svg>Cakes &amp; bakery</span><span><svg><use href="#i-ice"/></svg>Ice cream</span><span><svg><use href="#i-milk"/></svg>Dairy</span><span><svg><use href="#i-fish"/></svg>Seafood</span><span><svg><use href="#i-meat"/></svg>Meat &amp; poultry</span><span><svg><use href="#i-snow"/></svg>Frozen food</span><span><svg><use href="#i-pill"/></svg>Pharma · after licensing</span>
+    <span><svg><use href="#i-cake"/></svg>Cakes &amp; bakery</span><span><svg><use href="#i-ice"/></svg>Ice cream</span><span><svg><use href="#i-milk"/></svg>Dairy</span><span><svg><use href="#i-fish"/></svg>Seafood</span><span><svg><use href="#i-meat"/></svg>Meat &amp; poultry</span><span><svg><use href="#i-snow"/></svg>Frozen food</span><span><svg><use href="#i-pill"/></svg>Pharma · after licensing</span>
+  </div>
+</section>
+
+<!-- FLEET PHOTOS: stays hidden until real photos exist in assets/real/ (truck-1.jpg ... truck-6.jpg) -->
+<section id="fleet" class="sec ice" hidden>
+  <div class="wrap">
+    <div class="head rv">
+      <span class="kick">On the road</span>
+      <h2>Real reefers, real routes.</h2>
+    </div>
+    <div class="fleet" id="fleetGrid">
+      <figure hidden></figure><figure hidden></figure><figure hidden></figure><figure hidden></figure><figure hidden></figure><figure hidden></figure>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="wrap grid4">
+    <div class="stat rv"><b data-count="3">0</b><span>apps: customer, driver, admin</span></div>
+    <div class="stat rv"><b data-count="2">0</b><span>phases: full truckload, then part truckload</span></div>
+    <div class="stat rv"><b data-count="4">0</b><span>hiring models: on-call to annual</span></div>
+    <div class="stat rv"><b data-count="3">0</b><span>partner types: owner-driver, fleet, aggregator</span></div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why" class="sec">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="kick">The problem</span>
+      <h2>Perishables don't forgive a warm truck.</h2>
+      <p>Anyone shipping cakes, dairy, seafood or frozen food knows the same three headaches. ColdRoute is built around fixing each one.</p>
+    </div>
+    <div class="grid3">
+      <article class="card tilt rv">
+        <div class="ico a"><svg><use href="#i-snow"/></svg></div>
+        <h3>Finding a reefer you can trust</h3>
+        <p>Dry-truck apps can't carry perishables. Here every vehicle is verified: registration, permit, insurance, licence, and hygiene and pest-control certificates. If a hygiene certificate lapses, the truck is blocked from cold jobs automatically.</p>
+      </article>
+      <article class="card tilt rv">
+        <div class="ico b"><svg viewBox="0 0 24 24"><path d="M3 17l5-6 4 4 8-10" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Proving it stayed cold</h3>
+        <p>When cargo arrives warm, receivers can claim damage or charge cooling fees. Continuous temperature logs, door-open events and the temperature at handover become the evidence that protects both shipper and carrier.</p>
+      </article>
+      <article class="card tilt rv">
+        <div class="ico c"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="8" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><rect x="13" y="6" width="8" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 12h2" stroke="currentColor" stroke-width="2"/></svg></div>
+        <h3>Mixing loads safely</h3>
+        <p>Fish shouldn't share air with ice cream. Veg and non-veg stay apart. Pharma is isolated. A rules engine checks every load, and operations can edit the rules without waiting for a software release.</p>
+      </article>
+    </div>
+    <div class="compare rv">
+      <div class="cmp-h"><h3>Not a general freight app</h3><p>ColdRoute is an end-to-end, on-demand cold-chain marketplace. Dry-truck platforms such as Porter mainly move dry, ambient, local cargo.</p></div>
+      <table>
+        <thead><tr><th></th><th>Dry-freight apps</th><th class="us">ColdRoute</th></tr></thead>
+        <tbody>
+          <tr><td>Cargo</td><td>Dry, ambient goods</td><td>Perishables and sensitive goods in reefers, vans and multi-temperature vehicles</td></tr>
+          <tr><td>Reach</td><td>Mainly local, intra-city runs</td><td>Long-haul and regional corridors across India, opened corridor by corridor</td></tr>
+          <tr><td>Proof</td><td>&mdash;</td><td>Live IoT temperature, door events and a handover temperature record</td></tr>
+          <tr><td>Compliance</td><td>&mdash;</td><td>Strict sanitation checks: a lapsed hygiene certificate blocks cold jobs</td></tr>
+          <tr><td>Shared trucks</td><td>&mdash;</td><td>Multi-compartment capacity pooling: several shippers and temperature zones on one truck, with compatibility checks</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="sec dark">
+  <div class="wrap how">
+    <div class="how-vid rv">
+      <div class="vframe">
+        <video id="journeyVideo" muted loop playsinline preload="metadata" poster="assets/journey-poster.jpg">
+          <source src="assets/journey.mp4" type="video/mp4">
+        </video>
+        <button class="vbtn" id="journeyToggle" aria-label="Play or pause the demo video">❚❚</button>
+      </div>
+      <p class="cap">A booking from request to proof of delivery. Illustrative animation, not live data.</p>
+    </div>
+    <div class="how-steps">
+      <div class="head left rv">
+        <span class="kick">How it works</span>
+        <h2>From booking to proof, in four steps.</h2>
+      </div>
+      <ol class="steps" id="howSteps">
+        <li class="on" data-t="0"><button><span class="n">1</span><span><b>Book</b><small>Enter pickup, drop, time windows, cargo and temperature. The platform checks the range against what the vehicle can do and screens out prohibited goods. Get an itemised quote, with waiting charges and taxes shown separately, then pay.</small></span></button></li>
+        <li data-t="3.6"><button><span class="n">2</span><span><b>Dispatch</b><small>The platform offers the job to verified reefers that match capacity, temperature, location and a valid hygiene certificate. The driver accepts, or operations assigns one. Before loading, the driver completes pre-trip checks and confirms pre-cooling.</small></span></button></li>
+        <li data-t="6.6"><button><span class="n">3</span><span><b>Track</b><small>Follow the truck on the map with a live temperature graph. A GPS and temperature device is the primary source; the driver's phone is the backup. Door openings are logged, and you can switch on temperature-breach alerts.</small></span></button></li>
+        <li data-t="11.6"><button><span class="n">4</span><span><b>Deliver</b><small>The receiver confirms with OTP, signature or photo. The compartment temperature at handover is recorded. Invoice and settlement follow automatically, and customer and partner rate each other.</small></span></button></li>
+      </ol>
+      <div class="stops rv">
+        <b>Multi-stop trips</b>
+        <p>One booking can have several pickups and drops. Stops get labels so operations, drivers and customers all mean the same stop.</p>
+        <div class="chips"><span class="sc a">A1 pickup</span><span class="sc a2">A2 drop</span><span class="sc b">B1 pickup</span><span class="sc b2">B2 drop</span></div>
+        <small>Working assumption, to be confirmed: the letter is the consignment or customer, the number is the stop sequence.</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FTL vs PTL -->
+<section id="modes" class="sec">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="kick">Two phases</span>
+      <h2>A whole truck now. A shared truck next.</h2>
+      <p>We start with full-truckload bookings, then add part-truckload once real data shows which routes can fill a truck.</p>
+    </div>
+    <div class="switch rv" role="tablist">
+      <button class="on" data-mode="ftl" role="tab">Phase 1 · FTL</button>
+      <button data-mode="ptl" role="tab">Phase 2 · PTL</button>
+    </div>
+    <div class="modes rv">
+      <div class="modeviz">
+        <svg viewBox="0 0 640 250" id="modeSvg" role="img" aria-label="Truck loading diagram">
+          <ellipse cx="320" cy="222" rx="290" ry="9" fill="#06121f" opacity=".12"/>
+          <rect x="20" y="30" width="410" height="170" rx="14" fill="#f4fbff" stroke="#0b2f4d" stroke-width="4"/>
+          <path d="M440 200V70h70q20 0 30 22l30 56v52z" fill="#12507a"/><path d="M455 84h52q12 0 18 14l20 36h-90z" fill="#bfeaf3"/>
+          <g id="blocks"></g>
+          <g fill="#0b0e13"><circle cx="90" cy="206" r="22"/><circle cx="150" cy="206" r="22"/><circle cx="520" cy="206" r="22"/></g>
+          <g fill="#9db0bd"><circle cx="90" cy="206" r="11"/><circle cx="150" cy="206" r="11"/><circle cx="520" cy="206" r="11"/></g>
+        </svg>
+      </div>
+      <div class="modetxt">
+        <h3 id="modeTitle"></h3>
+        <p id="modeDesc"></p>
+        <ul id="modeList"></ul>
+        <div class="eg" id="modeEg"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SMART TRUCKS -->
+<section id="trucks" class="sec ice">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="kick">Built for cold</span>
+      <h2>One truck, several temperatures.</h2>
+      <p>Movable insulated bulkheads split a reefer into compartments, each with its own temperature range and sensor. Tap a compartment, or change the layout.</p>
+    </div>
+    <div class="two">
+      <div class="panel rv">
+        <div class="seg" id="layoutSeg">
+          <button class="on" data-l="1">1 zone</button><button data-l="2">2 zones</button><button data-l="3">3 zones</button>
+        </div>
+        <svg viewBox="0 0 700 260" id="truckSvg" class="truck-svg" role="img" aria-label="Multi-temperature truck"></svg>
+        <div class="zoneinfo" id="zoneInfo"></div>
+      </div>
+      <div class="panel rv">
+        <h3>Can these ride together?</h3>
+        <p class="muted">Pick two cargo types. Rules follow the project's initial segregation set, to be confirmed with operations and quality staff.</p>
+        <div class="selrow">
+          <label>Cargo 1<select id="cA"></select></label>
+          <label>Cargo 2<select id="cB"></select></label>
+        </div>
+        <div class="verdict" id="verdict"></div>
+      </div>
+    </div>
+    <div class="specs rv">
+      <div class="spec"><b>Vehicle types</b><span>Reefer trucks, vans and multi-temperature vehicles, plus dry-cargo vehicles for loads that aren't temperature-sensitive.</span></div>
+      <div class="spec"><b>Every compartment records</b><span>Position (front, middle, rear) and loading sequence · capacity by weight, volume and pallets · temperature range and setpoint · independent or shared cooling · fixed or movable bulkhead · linked sensors.</span></div>
+      <div class="spec"><b>Hybrid loads</b><span>A food chain can send dry bakery supplies and frozen inventory in a single run: dry goods ambient, frozen goods at &minus;18 &deg;C.</span></div>
+    </div>
+    <div class="rules rv">
+      <h3>The segregation rules</h3>
+      <div class="rgrid">
+        <div><b>Pharma</b><span>Dedicated compartment or vehicle. Never shared with commercial foods or odour-producing goods.</span></div>
+        <div><b>Veg vs non-veg</b><span>Vegetarian and Jain foods stay strictly apart from non-veg: separate compartments, or separate vehicles for strict dietary or religious needs.</span></div>
+        <div><b>Meat and seafood</b><span>Not combined with dairy, bakery or ice cream unless sealed packaging and a separate compartment are validated.</span></div>
+        <div><b>Smell transfer</b><span>Strong-odour cargo is flagged and isolated so its fumes can't reach ice cream, dairy and cakes.</span></div>
+        <div><b>Conflicting temperatures</b><span>Combined only where the vehicle has validated compartments for each band.</span></div>
+        <div><b>Allergens</b><span>Flagged per consignment. Conflicting allergen loads aren't combined without an approved policy.</span></div>
+      </div>
+      <p class="muted">Initial rule set, to be confirmed by operations and quality staff. Rules live in admin-editable configuration, so they can be tightened or relaxed without a software release.</p>
+    </div>
+  </div>
+</section>
+
+<!-- APPS -->
+<section id="apps" class="sec">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="kick">Three apps, one flow</span>
+      <h2>Everyone sees the same trip.</h2>
+    </div>
+    <div class="switch rv" role="tablist" id="appTabs">
+      <button class="on" data-app="customer" role="tab">Customer app</button>
+      <button data-app="driver" role="tab">Driver / Owner app</button>
+      <button data-app="admin" role="tab">Admin portal</button>
+    </div>
+    <div class="apps rv">
+      <div class="appmock" id="appMock"></div>
+      <div class="appinfo">
+        <h3 id="appTitle"></h3>
+        <p id="appDesc"></p>
+        <ul class="checks" id="appList"></ul>
+      </div>
+    </div>
+    <p class="cap2 rv">Illustrative screens with example data.</p>
+    <div class="roles-strip rv">
+      <h3>Eight roles, one platform</h3>
+      <div class="rs">
+        <span><b>Customer / shipper</b>Quote, book, pay, track, rate</span>
+        <span><b>Driver</b>Accept jobs, update milestones, log temperature</span>
+        <span><b>Owner-cum-driver</b>One person, one vehicle, one account</span>
+        <span><b>Fleet owner</b>10&ndash;50+ reefers, drivers, payouts per vehicle</span>
+        <span><b>Aggregator / broker</b>A pool of third-party vehicles, consolidated payouts</span>
+        <span><b>Operations admin</b>Verify, allocate, monitor, handle exceptions</span>
+        <span><b>Finance admin</b>Settlements, refunds, GST and tax reports</span>
+        <span><b>Super admin</b>Access control, pricing rules, audit logs</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST + LIVE DEMO -->
+<section id="trust" class="sec dark">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="kick">Trust</span>
+      <h2>Verified before dispatchable. Monitored once moving.</h2>
+      <p>No truck takes a cold job until it clears the pipeline. After that, temperature is watched the whole way.</p>
+    </div>
+    <div class="pipe rv" id="pipe"></div>
+    <p class="pipe-note rv" id="pipeNote"></p>
+    <div class="grid3 docs">
+      <article class="card dk rv"><h3>Standard KYC</h3><p>Vehicle RC, commercial fitness, national permit, driver licence and vehicle insurance.</p></article>
+      <article class="card dk rv"><h3>Hygiene &amp; reefer certification</h3><p>Last inspection date, sanitisation history, pest-control or de-infestation certificate, and pre-cooling validation. Certificates carry an expiry date, with reminders before they lapse.</p></article>
+      <article class="card dk rv"><h3>Reefer unit</h3><p>Make and model, temperature range, calibration date and service records.</p></article>
+    </div>
+    <div class="badge-row rv">
+      <span class="badge-pill">&#127941; Premium hygiene badge</span>
+      <p>Vendors who keep high hygiene standards earn a badge and can command higher pricing. Pre-cooling is validated on every trip before loading: target reached, timestamp, and a photo or sensor reading.</p>
+    </div>
+
+    <div class="two mt">
+      <div class="panel dk rv">
+        <div class="mon-top">
+          <div><small>Compartment A · setpoint −18 °C · limit −15 °C</small><div class="big"><span id="mT">−18.0</span> °C</div></div>
+          <div class="mon-btn">
+            <button class="btn sm" id="bDoor">Open door</button>
+            <button class="btn sm ghost" id="bFail">Cooling failure</button>
+            <button class="btn sm ghost" id="bReset">Reset</button>
+          </div>
+        </div>
+        <canvas id="mChart" width="720" height="260"></canvas>
+        <div class="mon-st"><span>Door: <b id="sDoor">Closed</b></span><span>Cooling: <b id="sCool">Running</b></span><span>Status: <b id="sStat" class="ok">In range</b></span></div>
+      </div>
+      <div class="panel dk rv">
+        <h3>Try it: what an alert looks like</h3>
+        <ul class="log" id="log"><li class="muted">Press “Open door” or “Cooling failure”.</li></ul>
+        <p class="muted">Every excursion is logged with time and severity. The log, plus the handover temperature, is the evidence if a receiver disputes the delivery.</p>
+      </div>
+    </div>
+
+    <div class="alerts rv">
+      <b>Alerts that reach operations, the driver and, if you choose, you:</b>
+      <div class="chips"><span>Temperature out of range</span><span>Door opened in transit</span><span>Cooling unit off</span><span>Sensor disconnect</span><span>Route deviation</span><span>Stale GPS</span></div>
+      <small>Every alert has a severity, an acknowledgement, the action taken and a closure, which together form the quality audit trail.</small>
+    </div>
+    <div class="two mt">
+      <div class="panel dk rv">
+        <h3>Two layers of tracking</h3>
+        <div class="layers">
+          <div class="ly p"><b>Hardware layer · primary</b><span>Vehicle GPS and reefer data logger: location, speed, ignition, temperature per compartment, compressor on/off.</span></div>
+          <div class="ly-ar">+</div>
+          <div class="ly s"><b>Driver app · secondary</b><span>Confirms milestones, covers vehicles without hardware, and takes over if a device goes offline.</span></div>
+        </div>
+        <div class="reco">The platform reconciles both and raises an alert when they disagree, for example the phone is at the drop but the device shows the truck elsewhere, or when either layer goes silent.</div>
+      </div>
+      <div class="panel dk rv">
+        <h3>Proof at the door</h3>
+        <div class="compare-t"><div><small>Loaded</small><b>&minus;18 &deg;C</b></div><span>&rarr;</span><div class="warm"><small>Arrived</small><b>&minus;13 &deg;C</b></div></div>
+        <p class="muted">Receiving cold-storage hubs can charge cooling fees when cargo arrives warmer than required. The time-stamped handover temperature protects shippers and carriers from unfair claims, and holds partners accountable when a real excursion happened.</p>
+        <ul class="mini-list"><li>Every door opening is logged with time, location and duration, linked to the stop.</li><li>Door discipline: quick handover, doors closed straight away.</li></ul>
+      </div>
+    </div>
+
+    <div class="grid3 partners">
+      <article class="card dk rv"><div class="em">🧑‍✈️</div><h3>Owner-cum-driver</h3><p>One person, one reefer. Quick onboarding with vehicle KYC.</p></article>
+      <article class="card dk rv"><div class="em">🏢</div><h3>Fleet owner</h3><p>10 to 50+ reefers with employed drivers and a fleet dashboard.</p></article>
+      <article class="card dk rv"><div class="em">🔗</div><h3>Aggregator</h3><p>Pools third-party trucks. Every vehicle still passes KYC and hygiene checks.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section id="who" class="sec ice">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="kick">Who it's for</span>
+      <h2>Built for people who ship at 2 to 8 &deg;C, and colder.</h2>
+    </div>
+    <div class="grid3 seg3">
+      <article class="card rv"><svg class="sico"><use href="#i-cake"/></svg><h3>Bakeries &amp; cake businesses</h3><p><b>City-to-city or store replenishment.</b> A dedicated reefer for bulk, shared PTL for small consignments.</p></article>
+      <article class="card rv"><svg class="sico"><use href="#i-ice"/></svg><h3>Dairy &amp; ice-cream distributors</h3><p><b>Chilled and frozen regional distribution.</b> Temperature-aware matching and visibility.</p></article>
+      <article class="card rv"><svg class="sico"><use href="#i-fish"/></svg><h3>Seafood, meat &amp; frozen food</h3><p><b>Processor to distributor or retailer.</b> Cold-chain evidence, scheduled lanes and fewer empty kilometres.</p></article>
+      <article class="card rv"><span class="sico em2">&#127981;</span><h3>Food manufacturers &amp; QSR chains</h3><p><b>Plant to warehouse or store.</b> Repeat bookings, business accounts, monthly and annual contracts, predictable SLAs.</p></article>
+      <article class="card rv"><svg class="sico"><use href="#i-pill"/></svg><h3>Pharma &amp; healthcare</h3><p><b>Eligible temperature-sensitive goods.</b> Only after licensing, packaging and quality validation.</p></article>
+      <article class="card rv"><span class="sico em2">&#128667;</span><h3>3PLs &amp; distributors</h3><p><b>Overflow and regional capacity.</b> Verified reefer supply and shipment tracking.</p></article>
+    </div>
+    <p class="note rv">Customers are verified in proportion to the credit given, and ratings go both ways: customers rate the service, partners rate the customer.</p>
+  </div>
+</section>
+
+<!-- HIRING MODELS -->
+<section class="sec">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="kick">Hire it your way</span>
+      <h2>Four ways to book a reefer.</h2>
+    </div>
+    <div class="grid4 hire">
+      <article class="card rv"><span class="tag">Pay as you go</span><h3>On-call</h3><p>An ad-hoc booking placed 24 hours in advance, for one trip. Priced per trip.</p></article>
+      <article class="card rv"><span class="tag">Reserved</span><h3>Dedicated vehicle</h3><p>A vehicle reserved for you for a period, at a day or trip rate. A fixed vehicle and driver where possible.</p></article>
+      <article class="card rv"><span class="tag">Contract</span><h3>Monthly</h3><p>Recurring volume over a month: a negotiated rate card, a minimum commitment and an invoicing cycle.</p></article>
+      <article class="card rv"><span class="tag">Contract</span><h3>Annual</h3><p>A long-term agreement: rate card with review clauses, SLA and credit terms, and an optional fuel adjustment.</p></article>
+    </div>
+    <p class="note rv">Contract bookings inherit the contract's rate card and SLA automatically.</p>
+    <div class="pricing rv">
+      <h3>Know what you'll pay</h3>
+      <p class="muted">Quotes come from a configurable pricing engine, never a hard-coded price list. Every charge is itemised:</p>
+      <div class="chips"><span>Minimum fare</span><span>Distance × rate per km</span><span>Temperature surcharge</span><span>Extra pickups and drops</span><span>Tolls &amp; handling</span><span>Waiting, after a grace period</span><span>Night or remote fee, disclosed before you confirm</span><span>Taxes, shown separately</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- UNDER THE HOOD -->
+<section class="sec dark hood">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="kick">Under the hood</span>
+      <h2>Telemetry flows one way, and never clogs your bookings.</h2>
+      <p>Sensor data takes its own path to a separate store, so millions of GPS points can't slow down booking and payment.</p>
+    </div>
+    <div class="tflow rv" id="tflow">
+      <div class="tn">GPS &amp; reefer devices</div><i>&rarr;</i>
+      <div class="tn">Vendor API or MQTT</div><i>&rarr;</i>
+      <div class="tn">Ingestion service<small>validate, normalise</small></div><i>&rarr;</i>
+      <div class="tn">SQS queue</div><i>&rarr;</i>
+      <div class="tn">Workers + rules engine</div><i>&rarr;</i>
+      <div class="tn hot">Telemetry store + alerts</div>
+    </div>
+    <div class="stack rv">
+      <span>React Native apps</span><span>React admin portal</span><span>Node.js + NestJS API</span><span>PostgreSQL on RDS</span><span>AWS ECS Fargate + load balancer</span><span>S3 for documents &amp; proof</span><span>SQS &amp; EventBridge workers</span><span>Razorpay or Cashfree</span><span>Google Maps or Mappls</span><span>Firebase push + SMS OTP</span><span>GeoTracker telematics (credentials pending)</span>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap" class="sec ice">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="kick">Roadmap</span>
+      <h2>Start narrow. Prove it. Then share the truck.</h2>
+    </div>
+    <div class="road">
+      <article class="rm rv"><span class="dot"></span><b>Phase 1</b><h3>Full truckload marketplace</h3><ul><li>Customer, driver and admin apps</li><li>Verified vehicles and hygiene checks</li><li>Quotes, payments, live tracking</li><li>Temperature logs and proof of delivery</li></ul></article>
+      <article class="rm rv"><span class="dot"></span><b>Phase 2</b><h3>Part truckload</h3><ul><li>Shared loads on scheduled lanes</li><li>Consolidation and compartment planning</li><li>Hub scans per shipment</li><li>Per-shipment claims and settlement</li></ul></article>
+      <article class="rm rv"><span class="dot"></span><b>Later</b><h3>Grow the platform</h3><ul><li>Business subscriptions and API access</li><li>Premium telematics add-on</li><li>Pharma, once licensing and validation are in place</li><li>Corridor-by-corridor expansion</li></ul></article>
+    </div>
+    <div class="two mt scope">
+      <div class="panel rv">
+        <h3>How we'll launch</h3>
+        <ul class="checks">
+          <li>Pilot a few dense corridors and city clusters first</li>
+          <li>Build reliable reefer supply before paid national advertising</li>
+          <li>Sign anchor shippers with repeat weekly volume</li>
+          <li>Start with FTL, then use pilot data to find lanes where PTL can reach reliable load factors</li>
+          <li>Advertise a corridor only where supply is verified</li>
+        </ul>
+      </div>
+      <div class="panel rv">
+        <h3>Not in the first release</h3>
+        <ul class="nots">
+          <li>Owning or running a company reefer fleet</li>
+          <li>AI-based dynamic pricing</li>
+          <li>Guaranteed nationwide same-day coverage</li>
+          <li>Automated integration with every reefer make and model. Phase 1: driver-entered readings plus one integrated telematics vendor</li>
+          <li>International, air and rail freight</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec">
+  <div class="wrap narrow">
+    <div class="head rv"><span class="kick">Questions</span><h2>Good to know</h2></div>
+    <details class="rv"><summary>Is this like Porter?</summary><p>Similar booking experience, different job. Porter moves ordinary goods, mostly inside a city. ColdRoute is for temperature-controlled goods over longer distances, with temperature monitoring and proof built in.</p></details>
+    <details class="rv"><summary>Can I ship medicines?</summary><p>Pharma is planned but gated. It opens only after licensing, packaging and quality validation are in place, and it always travels in its own compartment or vehicle.</p></details>
+    <details class="rv"><summary>What if cargo arrives warm?</summary><p>The platform records continuous temperature, door openings and the handover reading. That record is the evidence for resolving a dispute fairly. Thresholds and compensation rules per cargo type are still to be agreed.</p></details>
+    <details class="rv"><summary>Which cities will launch first?</summary><p>Pilot corridors are still to be decided. We expand one corridor at a time as the data supports it.</p></details>
+    <details class="rv"><summary>I own reefer trucks. Can I join?</summary><p>Yes: as an owner-driver, a fleet owner or an aggregator. Join the early-access list and tell us your vehicle count and routes.</p></details>
+    <details class="rv"><summary>Which tracking hardware do I need?</summary><p>Phase 1 supports driver-entered temperature readings plus one integrated telematics vendor (GeoTracker or an equivalent). Whether hardware is mandatory for every vehicle is still being decided.</p></details>
+    <details class="rv"><summary>What do stop labels like A1 and B2 mean?</summary><p>Each stop gets a label so everyone means the same stop. The working assumption: the letter identifies the consignment or customer (A, B) and the number is the stop sequence, so A1 is a pickup and A2 its drop. This is to be confirmed.</p></details>
+    <details class="rv"><summary>Who issues the GST invoice?</summary><p>The platform starts as a marketplace and transport coordinator. Carrier, transporter and GST invoicing roles, including whether an aggregator issues the invoice, are being confirmed with Indian legal and tax advisers.</p></details>
+    <details class="rv"><summary>What is still being decided?</summary><p>Open items with the client: the stop-label convention; carrier of record and GST invoicing; pharma in the launch scope and the licences it needs; who supplies telematics hardware; excursion thresholds and compensation rules per cargo category; how strict veg and non-veg separation must be; the first pilot corridors and city clusters; and how long telemetry is kept for audits and disputes.</p></details>
+  </div>
+</section>
+
+<!-- JOIN -->
+<section id="join" class="join">
+  <div class="wrap join-in">
+    <div class="join-copy rv">
+      <span class="kick lt">Early access</span>
+      <h2>Be first on the cold lane.</h2>
+      <p>Tell us who you are and which route matters most. We'll reach out as the pilot opens.</p>
+      <ul class="ticks lt"><li>Shippers: book reefers and get temperature proof</li><li>Owner-drivers and fleet owners: get verified and receive jobs</li><li>Aggregators: pool and onboard your vehicles</li></ul>
+    </div>
+    <form class="form rv" id="joinForm" novalidate>
+      <div class="roles" id="roles">
+        <label><input type="radio" name="role" value="Shipper" checked><span>Shipper</span></label>
+        <label><input type="radio" name="role" value="Owner-cum-driver"><span>Owner-driver</span></label>
+        <label><input type="radio" name="role" value="Fleet owner"><span>Fleet owner</span></label>
+        <label><input type="radio" name="role" value="Aggregator"><span>Aggregator</span></label>
+      </div>
+      <label>Your name<input type="text" id="fName" placeholder="Priya Sharma" autocomplete="name" required></label>
+      <label>Phone or email<input type="text" id="fContact" placeholder="+91 98765 43210" autocomplete="tel" required></label>
+      <label>Main route or city <input type="text" id="fRoute" placeholder="Bengaluru → Chennai"></label>
+      <label>What do you ship, or how many reefers do you run? <input type="text" id="fCargo" placeholder="Ice cream, 2 t weekly  ·  or  ·  12 reefers"></label>
+      <button class="btn lg block" type="submit">Request early access</button>
+      <p class="fmsg" id="fMsg" role="status"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div><a href="#top" class="logo"><svg class="lgo"><use href="#i-snow"/></svg>ColdRoute</a><p>Temperature-controlled road transport, with proof.</p></div>
+    <p class="small">Concept page based on the Reefer PTL Cold-Chain Logistics Platform v1.2 document. Names, example prices and rules are illustrative and pending client sign-off. Animations are illustrative, not live data. © <span id="yr"></span></p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
